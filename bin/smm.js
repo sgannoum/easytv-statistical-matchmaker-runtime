@@ -17,11 +17,12 @@ the European Union's Seventh Framework Programme (FP7/2007-2013)
 under grant agreement no. 289016.
 */
 
-var fluid = require("universal"),
+var fluid = require("C:\\Users\\salgan\\git\\universal"),
     kettle = fluid.registerNamespace("kettle");
 
 fluid.require("../lib/StatisticalMatchMaker.js", require);
 
+//Set kettel configuration
 kettle.config.loadConfig({
     configPath: require("path").resolve(__dirname, "../configs"),
 	configName: "development"

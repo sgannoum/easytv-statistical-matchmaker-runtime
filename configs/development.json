@@ -10,7 +10,7 @@
                     "port": 8077,
 					"components": {
 						"statisticalMatchmaker": {
-							"type": "gpii.statisticalMatchmaker"
+							"type": "easytv.statisticalMatchmaker"
 						}
 					}
                 }
