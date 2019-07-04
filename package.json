@@ -1,10 +1,8 @@
 {
   "name": "statisticalMatchMaker",
-  "description": "JavaScript end of the smm1.",
+  "description": "JavaScript end of the smm.",
   "version": "1.4.7",
-  "author": "GPII",
-  "bugs": "http://issues.gpii.org/",
-  "homepage": "http://gpii.net/",
+  "author": "EasyTV",
   "dependencies": {
     "compute-canberra-distance": "git://github.com/compute-io/canberra-distance.git",
     "compute-chebyshev-distance": "git://github.com/compute-io/chebyshev-distance.git",
