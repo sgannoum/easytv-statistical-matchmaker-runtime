@@ -3,26 +3,6 @@
   "description": "JavaScript end of the smm.",
   "version": "1.4.7",
   "author": "EasyTV",
-  "dependencies": {
-    "gpii-universal": "0.3.0-dev.20180221T093422Z.50833c1",
-    "node-rest-client": "~0.7.5",
-    "when": "~1.8.1"
-  },
-  "devDependencies": {
-    "browserify": "16.2.3",
-    "gpii-express": "1.0.14",
-    "gpii-grunt-lint-all": "1.0.5",
-    "gpii-testem": "2.1.5",
-    "grunt": "1.0.3",
-    "grunt-markdownlint": "2.1.0",
-    "http-browserify": "1.7.0",
-    "https-browserify": "1.0.0",
-    "nyc": "13.1.0",
-    "pouchdb": "6.4.3",
-    "recursive-copy": "2.0.9",
-    "testem": "2.10.0",
-    "url": "0.11.0"
-  },
   "licenses": [
     {
       "type": "BSD-3-Clause",
@@ -33,11 +13,18 @@
     "matchmaker",
     "framework",
     "evented",
-    "GPII"
+    "EasyTV"
   ],
-  "repository": "git://github.com/GPII/statisticalMatchMaker.git",
-  "main": "./bin/statisticalMatchMaker.js",
+  "repository": "",
+  "main": "./bin/smm.js",
   "engines": {
     "node": ">=0.1.9"
+  },
+  "scripts": {
+    "start": "npm run nodemon",
+    "production": "node ./bin/smm.js"
+  },
+  "dependencies": {
+    "eval": "^0.1.4"
   }
 }

@@ -151,24 +151,11 @@ var StatisticalMatchMakerImpl = require('../lib/StatisticalMatchMakerImpl')
 	myMap.set("http://registry.easytv.eu/application/cs/cc/subtitles/fontSize", new Numeric(95.0, 4.0, 0.0 ));
 	myMap.set("http://registry.easytv.eu/application/cs/cc/subtitles/fontColor", new Color(new Numeric(216.0, 3.0, -1.0 ),new Numeric(251.0, 30.0, -1.0 ),new Numeric(253.0, 19.0, -1.0 )));
 	myMap.set("http://registry.easytv.eu/application/cs/cc/subtitles/backgroundColor", new Color(new Numeric(243.0, 18.0, -1.0 ),new Numeric(243.0, 73.0, -1.0 ),new Numeric(205.0, 21.0, -1.0 )));
-	/**
+
+/**
  * 
  */
-
 var stmmImpl = new StatisticalMatchMakerImpl(myMap)
-
-
-function test_getPreferencesPoints() {
-	var actualPoints = stmmImpl.getPerferencePoints(user_profile1);
-	var expectedPoints = stmmImpl.getPerferencePoints(user_profile1);
-	
-	assert (actualPoints.length == expectedPoints.length)
-	assert (actualPoints.every(function(u, i) {
-		        return u === expectedPoints[i];
-		    }), "Preferences points are not equals " + actualPoints);
-	
-	console.log("test_getPreferencesPoints PASS");
-}
 
 function test_toJSON_StringProfile() {
 	var actualProf = stmmImpl.toJSON(user_profile1, null, 4)
@@ -179,18 +166,33 @@ function test_toJSON_StringProfile() {
 	console.log("test_toJSON_StringProfile PASS");
 }
 
-
-function test_getClusterDistance() {
-	var actualDist = stmmImpl.getClusterDistance(user_profile1, user_profile2);
-	var expectedDist = 0.6577663685112631
-	assert (actualDist == expectedDist, "Distance is not equals (" + actualDist +" != " + expectedDist+")");
+/**
+ * Test the all dimensions similarity functions
+ * @returns
+ */
+function test_all_dimensions_similarity_function() {
+	var relevantClusters = stmmImpl.getRelevantClusters(user_profile1, clusters, stmmImpl.all_dimensions_similarity_distance);
 	
-	console.log("test_getClusterDistance PASS");
+	//TODO test this case
+	//console.log(relevantClusters)
+	
+	console.log("test_all_dimensions_similarity_function PASS");
 }
 
+/*
+ * Test accessibility services similarity functions
+ */
+function test_accessiblity_services_dimensions_similarity_function() {
+	var relevantClusters = stmmImpl.getRelevantClusters(user_profile1, clusters, stmmImpl._accessibility_services_similarity_distance);
+	
+	//TODO test this case
+	//console.log(relevantClusters)
+	
+	console.log("test_accessiblity_services_dimensions_similarity_function PASS");
+}
 
 function test_infer() {
-	var actual_user_profile = stmmImpl.infer(user_profile4, clusters, 10)
+	var actual_user_profile = stmmImpl.infer(user_profile4, clusters)
 	
 	//most relevant profile is user_profile1
 	var expectedProf = JSON.stringify(user_profile1, null, 4)
@@ -205,12 +207,41 @@ function test_infer() {
 	console.log("test_infer PASS");
 }
 
-//run test_getPoints
-test_getPreferencesPoints();
-test_getClusterDistance();
+function test_infer_content() {
+	
+	var MPD = {'http://registry.easytv.eu/common/content/audio/language': [ 'CA', 'GR' ],
+			   'http://registry.easytv.eu/application/cs/cc/subtitles/language': ['GR'],
+			   'http://registry.easytv.eu/application/cs/accessibility/faceDetection': true,
+			   'http://registry.easytv.eu/application/cs/accessibility/textDetection':  true,
+			   'http://registry.easytv.eu/application/cs/accessibility/soundDetection': true,
+			   'http://registry.easytv.eu/application/cs/accessibility/characterRecognition': true};
+	
+	var actual_user_profile = stmmImpl.infer_content_adapatation(user_profile4, MPD, clusters)
+	
+	//most relevant profile is user_profile1
+	var expectedProf = JSON.stringify(user_profile1, null, 4)
+	
+	//console.log(JSON.stringify(user_profile4, null, 4));
+	//console.log("==============after inference================");
+	//console.log(actual_user_profile);
+	
+	//check the profile assigned value
+	//assert (actual_user_profile["http://registry.easytv.eu/application/tts/speed"] == expectedProf["http://registry.easytv.eu/application/tts/speed"], "profiles are not equals expected" + expectedProf+ " but found "+ actual_user_profile);
+
+	console.log("test_infer_content PASS");
+}
+
+//test the similarity value of the user profile to the others clusters
+test_all_dimensions_similarity_function();
+
+//test the similarity value of the user profile to the others clusters
+test_accessiblity_services_dimensions_similarity_function();
 
 //run test_toJSON
 test_toJSON_StringProfile();
 
 //run test_infer()
 test_infer();
+
+//run test_infer() content
+test_infer_content();
