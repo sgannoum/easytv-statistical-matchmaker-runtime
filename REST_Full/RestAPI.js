@@ -50,7 +50,7 @@ app.use(bodyParser.json());
 
 
 //fill routes for express application
-app.use('/STMM/runtime', mappedOpenRoutes);
+app.use('/EasyTV_STMM_Restful_WS', mappedOpenRoutes);
 
 server.listen(config.port, () => {
 	if (environment !== 'production' &&
