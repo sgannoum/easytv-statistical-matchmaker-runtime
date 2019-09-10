@@ -2,8 +2,8 @@
  * A HTTP POST handler for route /match
  */
 
-const stat = require('../lib/StatisticalMatchmakerData.js');
-var StatisticalMatchMakerImpl = require('../lib/StatisticalMatchMakerImpl')
+var StatisticalMatchMakerImpl = require('../lib/StatisticalMatchMakerImpl.js')
+const stat = require('../lib/StatisticalMatchMakerData.js');
 var stmmImpl = new StatisticalMatchMakerImpl(stat.dimensionsHandlers);
 
 const EndPoints = () => {
@@ -12,7 +12,7 @@ const EndPoints = () => {
 		{
 			var radius = 1000			
 			const user_profile = req.body;
-	
+			console.log(req.body)
 			// Rejection tests
 			if (!user_profile) { return res.status(500).json({ msg: 'No user profile' });};
 			
