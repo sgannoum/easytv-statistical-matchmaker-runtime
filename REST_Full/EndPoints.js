@@ -12,7 +12,7 @@ const EndPoints = () => {
 		{
 			var radius = 1000			
 			const user_profile = req.body;
-			console.log(req.body)
+			
 			// Rejection tests
 			if (!user_profile) { return res.status(500).json({ msg: 'No user profile' });};
 			
@@ -67,13 +67,15 @@ const EndPoints = () => {
    const postUserClusters = (req, res) => {
 		try 
 		{
-			var clusters = request.req.body											 
+			var clusters = req.body											 
 			
 			//delete clusters
 			delete stat.clusters;
 			
 			//load new clusters
 			stat.clusters = clusters
+			
+			console.log("clusters has been loaded successfully")
 			
 			res.status(200).json({msg: "clusters has been loaded successfully"});
 			

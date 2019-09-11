@@ -8,8 +8,6 @@ COPY package*.json ./
 
 COPY . .
 
-RUN ls -l
-
 RUN npm install --verbose
 
 # Expose tomcat port
