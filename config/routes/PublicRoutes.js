@@ -2,12 +2,18 @@
  * 
  */
 
-const publicRoutes = {
-  'POST /match': 'EndPoints.postMatchHandler',
-  'GET  /match': 'EndPoints.getMatchtHandler',
-  'POST /content': 'EndPoints.postContentAdaptation',
-  'POST /clusters': 'EndPoints.postUserClusters',
-  'GET /clusters': 'EndPoints.gettUserClusters'
+const publicRoutes = { 
+  'POST /personalize/profile': 'ProfilePersonalization.personalize_profile',
+  'GET  /personalize/profile': 'ProfilePersonalization.get_information',
+
+  'GET  /personalize/context': 'ContextPersonalization.get_information',
+  'POST /personalize/context': 'ContextPersonalization.personalize_context',
+  
+  'POST /personalize/content': 'ContentPersonalization.personalize_content',
+  'GET  /personalize/content': 'ContentPersonalization.get_information',
+  
+  'POST /clusters': 'ClustersHandler.update_Clusters',
+  'GET /clusters': 'ClustersHandler.get_Clusters'
 };
 
 module.exports = publicRoutes;
