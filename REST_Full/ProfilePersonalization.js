@@ -28,7 +28,7 @@ const ProfilePersonalization = () => {
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			
-			console.log('user['+user_id+']: ',' personalize profile')
+			console.log('user['+user_id+']: ','personalize profile', user_profile)
 
 			//infer profiles
 			var new_user_profile = stmmImpl.personalize_profile(user_id, user_profile, radius);

@@ -16,4 +16,4 @@ EXPOSE 8077
 CMD ["npm", "run", "production"]
 
 
-#docker run -it --rm -p 8077:8078 stmm_rt:v1
+#docker run -it --rm -p 8078:8077 stmm_rt:v1

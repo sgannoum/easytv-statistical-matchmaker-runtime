@@ -37,14 +37,14 @@ const ContentPersonalization = () => {
 					  						  msg: msg.missing_user_content.msg_text });
 			}
 			
-			console.log('user['+user_id+']: ',' personalize content')
-	  
-	  
 			var radius = 1000
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			const user_context = req.body.user_context
 			const user_content = req.body.user_content
+			
+			console.log('user['+user_id+']: ','personalize content')
+
 						 
 			try 
 			{				

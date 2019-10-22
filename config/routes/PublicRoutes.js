@@ -12,8 +12,8 @@ const publicRoutes = {
   'POST /personalize/content': 'ContentPersonalization.personalize_content',
   'GET  /personalize/content': 'ContentPersonalization.get_information',
   
-  'POST /clusters': 'ClustersHandler.update_Clusters',
-  'GET /clusters': 'ClustersHandler.get_Clusters'
+  'POST /analysis/clusters': 'ClustersHandler.update_Clusters',
+  'GET /analysis/clusters': 'ClustersHandler.get_Clusters'
 };
 
 module.exports = publicRoutes;

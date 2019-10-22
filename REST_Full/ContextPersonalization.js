@@ -28,11 +28,12 @@ const ContextPersonalization = () => {
 					  						  msg: msg.missing_user_context.msg_text });
 			}
 			
-			console.log('user['+user_id+']: ',' personalize context')
 
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			const user_context = req.body.user_context
+			
+			console.log('user['+user_id+']: ','personalize context')
 						 
 			try 
 			{				
