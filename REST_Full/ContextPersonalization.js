@@ -27,13 +27,12 @@ const ContextPersonalization = () => {
 				return res.status(500).json({ code: msg.missing_user_context.msg_code, 
 					  						  msg: msg.missing_user_context.msg_text });
 			}
-			
 
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			const user_context = req.body.user_context
 			
-			console.log('user['+user_id+']: ','personalize context')
+			console.log('user['+user_id+']: ','personalize context', JSON.stringify(user_profile))
 						 
 			try 
 			{				

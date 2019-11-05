@@ -11,31 +11,32 @@ const ContentPersonalization = () => {
 	  
 			// Check for user Id
 			if (!req.body.user_id) { 
-				console.log('A request with missing user_id')
+				console.log('Personalize content requestt: missing user_id')
 				return res.status(500).json({ code: msg.missing_user_id.msg_code, 
 										      msg: msg.missing_user_id.msg_text });
 			}
 			
 			// Check for user profile
 			if (!req.body.user_profile) { 
-				console.log('A request with missing user_profile')
+				console.log('Personalize content requestt: missing user_profile')
 				return res.status(500).json({ code: msg.missing_user_profile.msg_code, 
 											  msg: msg.missing_user_profile.msg_text });
 			}
 			
 			// Check for user profile
 			if (!req.body.user_context) { 
-				console.log('A request with missing user_context')
+				console.log('Personalize content requestt: missing user_context')
 				return res.status(500).json({ code: msg.missing_user_context.msg_code, 
 					  						  msg: msg.missing_user_context.msg_text });
 			}
 			
 			// Check for user profile
 			if (!req.body.user_content) { 
-				console.log('A request with missing user_content')
+				console.log('Personalize content requestt: missing user_content')
 				return res.status(500).json({ code: msg.missing_user_content.msg_code, 
 					  						  msg: msg.missing_user_content.msg_text });
 			}
+		
 			
 			var radius = 1000
 			const user_id = req.body.user_id
@@ -43,9 +44,8 @@ const ContentPersonalization = () => {
 			const user_context = req.body.user_context
 			const user_content = req.body.user_content
 			
-			console.log('user['+user_id+']: ','personalize content')
+			console.log('user['+user_id+']: ','personalize content', JSON.stringify(user_profile))
 
-						 
 			try 
 			{				
 				//infer profiles
