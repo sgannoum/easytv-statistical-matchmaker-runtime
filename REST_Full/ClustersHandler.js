@@ -33,7 +33,7 @@ const ClustersHandler = () => {
 		try 
 		{		
 			
-			res.status(200).json(JSON.stringify(stmmImpl.get_clusters()));
+			res.status(200).json(stmmImpl.get_clusters());
 			
 		} catch(err) {
 	        console.log(err);
