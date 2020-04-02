@@ -142,6 +142,8 @@ var user_profile3 = JSON
 
 var clusters = [user_profile1, user_profile2, user_profile3]
 var stmmImpl = require('../lib/StatisticalMatchMakerImpl').stmmImpl
+var StatisticalMatchMakerImpl = require('../lib/StatisticalMatchMakerImpl').StatisticalMatchMakerImpl
+var current_instance = new StatisticalMatchMakerImpl(clusters)
 
 /**
  * Test the all dimensions similarity functions
@@ -233,6 +235,21 @@ function test_get_relevant_content_1() {
 	console.log("PASS");
 }
 
+/**
+ * Test the all dimensions similarity functions
+ * @returns
+ */
+function test_personalize_profile_1() {
+	console.log("test_personalize_profile_1...");
+	var bestMatch = current_instance.personalize_profile(user_profile1.user_id, user_profile1.user_profile);
+	
+	assert(bestMatch != undefined)
+	
+	console.log("PASS");
+}
+
+test_personalize_profile_1();
+
 //test the similarity value of the user profile to the others clusters
 test_get_relevant_profile_1();
 test_get_relevant_profile_2();
@@ -243,4 +260,3 @@ test_get_relevant_context_2();
 test_get_relevant_context_3();
 
 test_get_relevant_content_1();
-
