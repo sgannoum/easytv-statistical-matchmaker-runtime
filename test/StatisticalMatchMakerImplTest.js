@@ -242,5 +242,5 @@ test_get_relevant_context_1();
 test_get_relevant_context_2();
 test_get_relevant_context_3();
 
-//test_get_relevant_content_1();
+test_get_relevant_content_1();
 

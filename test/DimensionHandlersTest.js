@@ -92,6 +92,21 @@ function test_symmetricBinary_combine(){
 	console.log("PASS")
 }
 
+function test_multiNumeric_combine(){
+	
+	console.log("test_color_combine....")
+		
+	var color = new MultiNumeric([new IntegerNumeric(255, 0), new IntegerNumeric(255, 0), new IntegerNumeric(255, 0)], 8)
+	var a = 0xff0000 //red
+	var b = 0xffffff //black
+
+	assert(color.combine(a, b, [1.0, 0.0]) == a);
+	assert(color.combine(a, b, [0.5, 0.5]) == 0xff7f7f);
+	assert(color.combine(a, b, [0.4, 0.6]) == 0xff9999);
+
+	console.log("PASS")
+}
+
 function test_color_combine(){
 	
 	console.log("test_color_combine....")
@@ -123,6 +138,7 @@ function test_color_as_integer_combine(){
 	console.log("PASS")
 }
 
+test_multiNumeric_combine();
 test_color_as_integer_combine();
 test_color_combine();
 test_symmetricBinary_combine();
