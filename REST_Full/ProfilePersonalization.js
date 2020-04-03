@@ -7,8 +7,7 @@ var stmmImpl = require('../lib/StatisticalMatchMakerImpl.js').stmmImpl
 
 const ProfilePersonalization = () => {
   const personalize_profile = (req, res) => {	
-		try 
-		{
+
 			// Check for user Id
 			if (!req.body.user_id) { 
 				console.log('A request with missing user_id')
@@ -30,15 +29,17 @@ const ProfilePersonalization = () => {
 			
 			console.log('user['+user_id+']: ','personalize profile', JSON.stringify(user_profile))
 
-			//infer profiles
-			var new_user_profile = stmmImpl.personalize_profile(user_id, user_profile, radius);
-			
-			return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
+			try 
+			{
+				//infer profiles
+				var new_user_profile = stmmImpl.personalize_profile(user_id, user_profile, radius);
 				
-		} catch(err) {
-	        console.log('user['+user_id+']: ',err);
-	        return res.status(500).json({ msg: 'Internal server error' });
-		}
+				return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
+					
+			} catch(err) {
+		        console.log('user['+user_id+']: ',err);
+		        return res.status(500).json({ msg: 'Internal server error' });
+			}
 	};
 	
 	/**
@@ -57,7 +58,7 @@ const ProfilePersonalization = () => {
         		"									\"user_profile\": user profile json" +
         		"								}"});
       } catch (err) {
-        console.log('user['+user_id+']: ',err);
+        console.log(err);
         return res.status(500).json({ msg: 'Internal server error' });
       }
 	
