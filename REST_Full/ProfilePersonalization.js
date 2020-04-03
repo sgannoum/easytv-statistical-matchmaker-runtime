@@ -24,7 +24,7 @@ const ProfilePersonalization = () => {
 			}
 			
 			
-			var radius = 1000	
+			const radius = req.params.radius || req.query.radius
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			

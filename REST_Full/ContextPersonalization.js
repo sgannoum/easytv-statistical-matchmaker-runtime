@@ -29,6 +29,7 @@ const ContextPersonalization = () => {
 					  						  msg: msg.missing_user_context.msg_text });
 			}
 
+			const radius = req.params.radius || req.query.radius
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			const user_context = req.body.user_context
@@ -42,7 +43,7 @@ const ContextPersonalization = () => {
 				write_context_to_db(user_id, user_context)
 				
 				//infer profiles
-				var new_user_profile = stmmImpl.personalize_context(user_id, user_profile, user_context);
+				var new_user_profile = stmmImpl.personalize_context(user_id, user_profile, user_context, radius);
 				
 				return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
 				

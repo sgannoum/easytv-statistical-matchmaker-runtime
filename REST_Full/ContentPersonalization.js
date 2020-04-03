@@ -39,7 +39,7 @@ const ContentPersonalization = () => {
 			}
 		
 			
-			var radius = 1000
+			const radius = req.params.radius || req.query.radius
 			const user_id = req.body.user_id
 			const user_profile = req.body.user_profile
 			const user_context = req.body.user_context
@@ -54,7 +54,7 @@ const ContentPersonalization = () => {
 				write_content_to_db(user_id, user_context, user_content)
 				
 				//infer profiles
-				var new_user_profile = stmmImpl.personalize_content(user_id, user_profile, user_context, user_content);
+				var new_user_profile = stmmImpl.personalize_content(user_id, user_profile, user_context, user_content, radius);
 				
 				return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
 				
