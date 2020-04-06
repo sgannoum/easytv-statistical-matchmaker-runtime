@@ -3,7 +3,7 @@
  */
 var msg = require('./Messages.js')
 var stmmImpl = require('../lib/StatisticalMatchMakerImpl.js').stmmImpl
-var write_context_to_db = require('../lib/DataBaseHandler.js').write_context_to_db
+var DataBaseHandler = require('../lib/DataBaseHandler.js')
 
 const ContextPersonalization = () => {
   const personalize_context = (req, res) => {	
@@ -40,7 +40,7 @@ const ContextPersonalization = () => {
 			{		
 				
 				//write the user current context
-				write_context_to_db(user_id, user_context)
+				DataBaseHandler.write_context_to_db(user_id, user_context)
 				
 				//infer profiles
 				var new_user_profile = stmmImpl.personalize_context(user_id, user_profile, user_context, radius);
@@ -48,8 +48,11 @@ const ContextPersonalization = () => {
 				return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
 				
 			} catch(err) {
-		        console.log('user['+user_id+']: ',err);
-		        return res.status(500).json({ msg: 'Internal server error' });
+		        console.log('user['+user_id+'][ERROR]: ',err);
+		    	if(err instanceof TypeError)
+			        return res.status(500).json({ msg: err.message });
+		    	else
+		    		return res.status(500).json({ msg: 'Internal server error' });
 			}
 
 	};

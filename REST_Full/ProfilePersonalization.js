@@ -37,8 +37,11 @@ const ProfilePersonalization = () => {
 				return res.status(200).json({user_id: user_id, user_profile: new_user_profile});
 					
 			} catch(err) {
-		        console.log('user['+user_id+']: ',err);
-		        return res.status(500).json({ msg: 'Internal server error' });
+		        console.log('user['+user_id+'][ERROR]: ',err);
+		    	if(err instanceof TypeError)
+			        return res.status(500).json({ msg: err.message });
+		    	else
+		    		return res.status(500).json({ msg: 'Internal server error' });
 			}
 	};
 	
