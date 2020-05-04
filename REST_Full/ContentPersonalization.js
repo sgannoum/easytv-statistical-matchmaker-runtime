@@ -3,7 +3,6 @@
  */
 var msg = require('./Messages.js')
 var stmmImpl = require('../lib/StatisticalMatchMakerImpl.js').stmmImpl
-var DataBaseHandler = require('../lib/DataBaseHandler.js')
 
 const ContentPersonalization = () => {
 	
@@ -49,10 +48,6 @@ const ContentPersonalization = () => {
 
 			try 
 			{	
-				
-				//write the user current content
-				DataBaseHandler.write_content_to_db(user_id, user_context, user_content)
-				
 				//infer profiles
 				var new_user_profile = stmmImpl.personalize_content(user_id, user_profile, user_context, user_content, radius);
 				

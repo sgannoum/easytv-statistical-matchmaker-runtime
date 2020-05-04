@@ -3,7 +3,6 @@
  */
 var msg = require('./Messages.js')
 var stmmImpl = require('../lib/StatisticalMatchMakerImpl.js').stmmImpl
-var DataBaseHandler = require('../lib/DataBaseHandler.js')
 
 const ContextPersonalization = () => {
   const personalize_context = (req, res) => {	
@@ -38,9 +37,6 @@ const ContextPersonalization = () => {
 						 
 			try 
 			{		
-				
-				//write the user current context
-				DataBaseHandler.write_context_to_db(user_id, user_context)
 				
 				//infer profiles
 				var new_user_profile = stmmImpl.personalize_context(user_id, user_profile, user_context, radius);
