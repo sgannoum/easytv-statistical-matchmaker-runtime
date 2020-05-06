@@ -1,7 +1,7 @@
 /**
  * A HTTP POST handler for route /match
  */
-var msg = require('./Messages.js')
+var msg = require('./Messages.js').msg
 var stmmImpl = require('../lib/StatisticalMatchMakerImpl.js').stmmImpl
 
 const ContextPersonalization = () => {
